@@ -2,25 +2,19 @@ package ex3;
 
 import java.util.List;
 
-public class Aquarium {
-
-	private List<String> types;
-	private List<String> noms;
-	private List<String> comportements;
+public class Aquarium extends Zone {
+	public static final String nom = "Aquarium";
 	
-	public void addAnimal(String typeAnimal, String nomAnimal, String comportement) {
-		types.add(typeAnimal);
-		noms.add(nomAnimal);
-		comportements.add(comportement);
-	}
-	
-	public void afficherListeAnimaux(){
-		for (String nom: noms){
-			System.out.println(nom);
-		}
+	public boolean addAnimal(Animal a) {
+		if (a.getType() == TypeAnimal.POISSON) {
+			animaux.add(a);
+			return true;			
+		} else {
+			return false;
+		}	
 	}
 	
 	public double calculerKgsNourritureParJour(){
-		return noms.size() * 0.2;
+		return animaux.size() * 0.2;
 	}
 }

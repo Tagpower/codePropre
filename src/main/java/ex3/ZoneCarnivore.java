@@ -2,25 +2,19 @@ package ex3;
 
 import java.util.List;
 
-public class ZoneCarnivore {
+public class ZoneCarnivore extends Zone {
+	public static final String nom = "Zone carnivore";
 
-	private List<String> types;
-	private List<String> noms;
-	private List<String> comportements;
-	
-	public void addAnimal(String typeAnimal, String nomAnimal, String comportement) {
-		types.add(typeAnimal);
-		noms.add(nomAnimal);
-		comportements.add(comportement);
-	}
-	
-	public void afficherListeAnimaux(){
-		for (String nom: noms){
-			System.out.println(nom);
-		}
+	public boolean addAnimal(Animal a) {
+		if (a.getType() == TypeAnimal.MAMMIFERE && a.getComportement() == Comportement.CARNIVORE) {
+			animaux.add(a);
+			return true;			
+		} else {
+			return false;
+		}	
 	}
 	
 	public double calculerKgsNourritureParJour(){
-		return noms.size() * 10;
+		return animaux.size() * 10;
 	}
 }

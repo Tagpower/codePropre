@@ -2,29 +2,19 @@ package ex3;
 
 import java.util.List;
 
-public class FermeReptile {
-
-	private List<String> types;
-	private List<String> noms;
-	private List<String> comportements;
+public class FermeReptile extends Zone {
+	public static final String nom = "Ferme reptiles";
 	
-	public void addAnimal(String typeAnimal, String nomAnimal, String comportement) {
-		types.add(typeAnimal);
-		noms.add(nomAnimal);
-		comportements.add(comportement);
-	}
-	
-	public void afficherListeAnimaux(){
-		for (String nom: noms){
-			System.out.println(nom);
-		}
-	}
-	
-	public int compterAnimaux(){
-		return noms.size();
+	public boolean addAnimal(Animal a) {
+		if (a.getType() == TypeAnimal.REPTILE) {
+			animaux.add(a);
+			return true;			
+		} else {
+			return false;
+		}	
 	}
 	
 	public double calculerKgsNourritureParJour(){
-		return noms.size() * 0.1;
+		return animaux.size() * 0.1;
 	}
 }
